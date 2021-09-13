@@ -46,4 +46,5 @@ int main()
 }
 
 -------------------------------------------------------------------------------------------------------------------------
-Uma possível estratégia de paralelização seria paralelizar a operação de multiplicação dos termos do array, já que não há nenhuma dependência entre eles, o que reduziria o tempo de execução.
+Uma possível estratégia de paralelização seria paralelizar a operação de multiplicação dos termos do array, já que não há nenhuma dependência entre eles, o que reduziria o 
+tempo de execução.
