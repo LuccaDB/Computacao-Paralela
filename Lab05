@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int main()
+{
+    int tam;
+    int valor;
+    int i;
+    
+    printf("digite o tamanho do array: ");
+    scanf("%d",&tam);
+    
+    int array[tam];
+    for(i=0;i<=tam;i++){
+        printf("digite o elemento que quer inserir: ");
+        scanf("%d",&array[i]);
+    }
+    
+    printf("array alocado: ");
+    for(i=0;i<=tam;i++){
+        if(i<tam){
+             printf("%d,",array[i]);
+        }
+        else{
+            printf("%d",array[i]);
+        }
+    }
+    
+    printf("\n");
+    printf("digite o número que irá multiplicar todos os elementos do array: ");
+    scanf("%d",&valor);
+    
+    for(i=0;i<=tam;i++){
+        array[i]=array[i]*valor;
+    }
+    
+    printf("array após multiplicação: ");
+    for(i=0;i<=tam;i++){
+        if(i<tam){
+             printf("%d,",array[i]);
+        }
+        else{
+            printf("%d",array[i]);
+        }
+    }
+    
+}
