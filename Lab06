@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+
+void *Pth_mat_vect(int temp1){
+    int y[3];
+    int A[3][3];
+    int x[3];
+
+    A[0][0]=1;
+    A[0][1]=2;
+    A[0][2]=3;
+    A[0][3]=4;
+    A[1][0]=5;
+    A[1][1]=6;
+    A[1][2]=7;
+    A[1][3]=8;
+    A[2][0]=9;
+    A[2][1]=10;
+    A[2][2]=11;
+    A[2][3]=12;
+    A[3][0]=13;
+    A[3][1]=14;
+    A[3][2]=15;
+    A[3][3]=16;
+    
+    x[0]=1;
+    x[1]=2;
+    x[2]=3;
+    x[3]=4;
+    
+    int m = 3;
+    int n = 3;
+    int thread_count = 3;
+    
+    long rank = temp1;
+    
+    long my_rank = (long) rank;
+    int i, j;
+    int local_m = m/thread_count;
+    int my_first_row = my_rank*local_m;
+    int my_last_row = (my_rank+1)*local_m - 1;
+    
+    for (i = my_first_row; i<= my_last_row; i++){
+        y[i] = 0.0;
+        for(j = 0; j < n; j++){
+            y[i] += A[i][j]*x[j];
+        }
+    }
+    
+    return NULL;
+}
+
+int main()
+{
+    int rank = 3;
+    Pth_mat_vect(rank);
+    
+    return 0;
+}
