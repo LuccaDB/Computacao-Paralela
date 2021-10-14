@@ -1,40 +1,20 @@
+//Compilado com: https://www.onlinegdb.com/
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
 
-void *Pth_mat_vect(int temp1){
-    int y[3];
-    int A[3][3];
-    int x[3];
+void *Pth_mat_vect(void * rank);
 
-    A[0][0]=1;
-    A[0][1]=2;
-    A[0][2]=3;
-    A[0][3]=4;
-    A[1][0]=5;
-    A[1][1]=6;
-    A[1][2]=7;
-    A[1][3]=8;
-    A[2][0]=9;
-    A[2][1]=10;
-    A[2][2]=11;
-    A[2][3]=12;
-    A[3][0]=13;
-    A[3][1]=14;
-    A[3][2]=15;
-    A[3][3]=16;
-    
-    x[0]=1;
-    x[1]=2;
-    x[2]=3;
-    x[3]=4;
-    
-    int m = 3;
-    int n = 3;
-    int thread_count = 3;
-    
-    long rank = temp1;
-    
+int m = 3;
+int n = 3;
+
+int y[3] = {0,0,0};
+int A[3][3] = {{12,3,6},{21,17,5},{8,9,10}};
+int x[3] = {14,2,13};
+
+int thread_count = 3;
+
+void *Pth_mat_vect(void * rank){
     long my_rank = (long) rank;
     int i, j;
     int local_m = m/thread_count;
@@ -53,8 +33,21 @@ void *Pth_mat_vect(int temp1){
 
 int main()
 {
-    int rank = 3;
-    Pth_mat_vect(rank);
-    
+    long thread;
+    pthread_t * thread_handles;
+    thread_handles = malloc(thread_count * sizeof(pthread_t));
+
+    for(thread = 0; thread < thread_count; thread++){
+        pthread_create(&thread_handles[thread], NULL, Pth_mat_vect ,
+        (void*) thread);
+    }
+
+    for(thread = 0; thread < thread_count; thread++){
+        pthread_join(thread_handles[thread], NULL);
+    }
+
+    free(thread_handles);
+
+    printf("y[1] = %i \ny[2] = %i \ny[3] = %i",y[0],y[1],y[2]);
     return 0;
 }
