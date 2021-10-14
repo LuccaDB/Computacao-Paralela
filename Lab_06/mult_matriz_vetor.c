@@ -50,3 +50,4 @@ int main()
     printf("y[1] = %i \ny[2] = %i \ny[3] = %i",y[0],y[1],y[2]);
     return 0;
 }
+ 
