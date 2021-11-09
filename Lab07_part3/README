@@ -1,0 +1,1 @@
+Pode-se observar que a medida que aumentamos o número de threads, o tempo de execução diminui, com variações na constância de diminuição entre um e outro, o que pode ser afetado também pela parte de hardware da máquina, como o modelo de processador.
