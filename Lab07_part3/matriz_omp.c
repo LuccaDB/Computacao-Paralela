@@ -1,3 +1,4 @@
+//Fonte: https://people.sc.fsu.edu/~jburkardt/c_src/mxm_openmp/mxm_openmp.html#:~:text=MXM_OPENMP%2C%20a%20C%20code%20which,I%20is%20the%20identity%20matrix.
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
