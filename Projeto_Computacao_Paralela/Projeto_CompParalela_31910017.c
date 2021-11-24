@@ -8,11 +8,11 @@
 #define t_tot 100
 #define T 1000
 
-double h, sum = 0;
-double local_n = (double)(T/t_tot);
-
-void function(double* sum);
 void soma();
+void function(double* sum);
+
+double local_n = (double)(T/t_tot);
+double h, sum = 0;
 
 int main(){
     int para = 0;
